@@ -16,9 +16,11 @@ st.button("Click Me!")
 
 st.subheader("Chatbot Form")
 user_input = st.text_input("Enter your query:")
+user_age=st.number_input("Enter your age:", min_value=0, max_value=100, value=23)
+user_resume=st.file_uploader("Upload your resume:", type=["pdf", "docs","image"])
 
 if st.button("Submit"):
     response= client.models.generate_content(
-      model='gemini-3.5-flash', contents=user_input   
+    model='gemini-3.5-flash', contents=user_input   
     )
     st.write(response.text)
